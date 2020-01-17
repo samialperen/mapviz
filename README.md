@@ -35,19 +35,19 @@ Err:3 http:/
 W: GPG error: http://packages.ros.org <YOUR_UBUNTU_VERSION> InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5523BAEEB01FA116
 ```
 * The reason behind this is that the old ROS key has been revoked as part of the measures to deal with a recent security incident with build.ros.org (Security issue on ROS build farm). You need to change it. Here are the steps:
-** Delete old key
+  * Delete old key
 ```
 $ sudo apt-key del 421C365BD9FF1F717815A3895523BAEEB01FA116
 ```
-** Add new key
+  * Add new key
 ```
 $ sudo -E apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 ```
-** Now clean the cache and update
+  * Now clean the cache and update
 ```
 $ sudo apt clean && sudo apt update
 ```
-** For further info, you can check [this](https://answers.ros.org/question/325039/apt-update-fails-cannot-install-pkgs-key-not-working/) link. 
+  * For further info, you can check [this](https://answers.ros.org/question/325039/apt-update-fails-cannot-install-pkgs-key-not-working/) link. 
 **AT THE END OF WARNING**
 
 * Now you can build catkin workspace.
