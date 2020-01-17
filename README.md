@@ -23,6 +23,8 @@ $ cd catkin_ws
 $ rosdep install --from-paths src --ignore-src
 ```
 
+#############################################################
+
 **WARNING1:** If you have any error after rosdep install like:
 ```
 Err:3 http:/
@@ -32,6 +34,11 @@ Err:3 http:/
 * Run ```sudo apt update```.
 
 **AT THE END OF WARNING1**
+
+#############################################################
+
+
+#############################################################
 
 **WARNING2:** If you have error after apt update like:
 ```
@@ -53,6 +60,9 @@ $ sudo apt clean && sudo apt update
 * For further info, you can check [this](https://answers.ros.org/question/325039/apt-update-fails-cannot-install-pkgs-key-not-working/) link. 
   
 **AT THE END OF WARNING2**
+
+#############################################################
+
 
 * Now you can build catkin workspace.
 ```
