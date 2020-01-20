@@ -3,6 +3,8 @@ Mapviz is a ROS-based visualization tool with a plug-in system similar to rviz f
 
 
 ## Installation
+
+### Installing mapviz
 **TESTED PLATFORM:** Ubuntu 16.04 with ROS Kinetic
 
 Although there is an option to install with apt manager, I prefer to install from source.
@@ -69,6 +71,60 @@ $ sudo apt clean && sudo apt update
 $ cd catkin_ws
 $ catkin_make
 ```
+
+### Installing USB GPS Device
+**TESTED PLATFORM:** Ubuntu 16.04 with ROS Kinetic
+
+We are going to use ros package called [nmea_navsat_driver](http://wiki.ros.org/nmea_navsat_driver) that is a ROS package reads serial data coming from USB GPS device and convert it to a ROS topic. 
+
+* Go to your src directory in catkin_ws
+```
+$ cd catkin_ws/src
+```
+* Clone necessary packages
+```
+$ git clone  https://github.com/ros-drivers/nmea_navsat_driver --branch $ROS_DISTRO-devel
+$ git clone  https://github.com/ros-drivers/nmea_msgs --branch indigo-devel
+```
+* Go to root of catkin_ws and build
+```
+$ cd catkin_ws
+$ catkin_make
+```
+
+* Source setup.bash and run the example node
+```
+$ source catkin_ws/devel/setup.bash
+$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=38400
+```
+
+**WARNING:** If it gives error, no devices named /dev/ttyUSB0, then try to check whether your system detects the plugged GPS. 
+```
+$ lsusb
+```
+If you see GPS device here that's good. Now try to get device path.
+```
+$ dmesg | grep -i usb
+```
+Generally if it is not in ttyUSB path, it should be in ttyACM path. For instance, for the computer I am working on the path is ```/dev/ttyACM0```.
+
+**WARNING:** If you have permission errors to open /dev/tty**** path, then give the permission.
+```
+$ sudo chmod 666 /dev/ttyACM0
+```
+
+**WARNING:** Don't forget that you need to give permission again, if you replug the device.
+
+* Generally GPS devices boudrate is 4800. At least, this is the case for the GPS that I am using. Here is the example prompt that I am using: 
+```
+$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyACM0 _baud:=4800
+```
+
+
+
+
+
+
 
 
 
