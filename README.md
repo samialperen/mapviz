@@ -117,8 +117,17 @@ $ sudo chmod 666 /dev/ttyACM0
 
 * Generally GPS devices boudrate is 4800. At least, this is the case for the GPS that I am using. Here is the example prompt that I am using: 
 ```
-$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyACM0 _baud:=4800
+$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyACM0 _baud:=38400
 ```
+* Echo /fix topic to see whether you get correct coordinates
+```
+$ rostopic echo /fix
+```
+* Convert latitude and longtitude to Degree Minute Second (DMS) to check whether GPS works fine. 
+For this purpose, you can use [this website](https://www.latlong.net/lat-long-dms.html). 
+
+**WARNING:** If you don't get meaningful information or NaN when you subscribe to /fix topic, probably your device's baud rate is different. Try with different baud rates to find yours.
+
 
 ### Add Google Maps to Mapviz
 For this purpose, basically follow the tutorial in this [link](https://github.com/danielsnider/MapViz-Tile-Map-Google-Maps-Satellite).
