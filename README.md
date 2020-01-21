@@ -120,6 +120,8 @@ $ sudo chmod 666 /dev/ttyACM0
 $ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyACM0 _baud:=4800
 ```
 
+### Add Google Maps to Mapviz
+For this purpose, basically follow the tutorial in this [link](https://github.com/danielsnider/MapViz-Tile-Map-Google-Maps-Satellite).
 
 
 
