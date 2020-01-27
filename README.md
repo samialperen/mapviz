@@ -7,8 +7,7 @@ Mapviz is a ROS-based visualization tool with a plug-in system similar to rviz f
 ### Installing mapviz
 **TESTED PLATFORM:** Ubuntu 16.04 with ROS Kinetic
 
-Although there is an option to install with apt manager, I prefer to install from source.
-
+### Install from Source
 * Go your catkin workspace and find src directory.
 ```
 $ cd catkin_ws/src
@@ -72,11 +71,18 @@ $ cd catkin_ws
 $ catkin_make
 ```
 
+### Install from Ros-binaries
+```
+$ sudo apt-get install ros-kinetic-mapviz ros-kinetic-mapviz-plugins ros-kinetic-tile-map
+```
+
 ### Installing USB GPS Device
 **TESTED PLATFORM:** Ubuntu 16.04 with ROS Kinetic
 
+
 We are going to use ros package called [nmea_navsat_driver](http://wiki.ros.org/nmea_navsat_driver) that is a ROS package reads serial data coming from USB GPS device and convert it to a ROS topic. 
 
+### Installing from source
 * Go to your src directory in catkin_ws
 ```
 $ cd catkin_ws/src
@@ -96,6 +102,12 @@ $ catkin_make
 ```
 $ source catkin_ws/devel/setup.bash
 $ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=38400
+```
+
+### Installing from ros binaries
+```
+$ sudo apt-get install ros-kinetic-nmea-msgs
+$ sudo apt-get install ros-kinetic-nmea-navsat-driver
 ```
 
 **WARNING:** If it gives error, no devices named /dev/ttyUSB0, then try to check whether your system detects the plugged GPS. 
@@ -127,7 +139,6 @@ $ rostopic echo /fix
 For this purpose, you can use [this website](https://www.latlong.net/lat-long-dms.html). 
 
 **WARNING:** If you don't get meaningful information or NaN when you subscribe to /fix topic, probably your device's baud rate is different. Try with different baud rates to find yours.
-
 
 ### Add Google Maps to Mapviz
 For this purpose, basically follow the tutorial in this [link](https://github.com/danielsnider/MapViz-Tile-Map-Google-Maps-Satellite).
